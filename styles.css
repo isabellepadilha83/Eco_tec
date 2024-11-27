@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('img/fundocelular.jpg'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  color: #4a4a4a;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.title {
+  color: #a8832d;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-shadow {
+  color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: #436f44;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.logo {
+  margin-top: 10px;
+}
+
+.logo img {
+  max-width: 50%;
+}
+
+.button {
+  margin-top: 0px;
+  padding: 10px 20px;
+  background-color: #d4a431;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.button:hover {
+  background-color: #c3972e;
+  transform: scale(1.1);
+}
+
+.decoration {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.decoration img {
+  max-width: 60px;
+  margin: 0 5px;
+}
+
+.feliz {
+  color: #a8832d;
+  font-family: "Mountains of Christmas", serif;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+.natal {
+  color: #a8832d;
+  font-family: "Mountains of Christmas", serif;
+  font-size: 50px;
+}
+
+@media(max-width: 500px){
+  .container {
+    padding: 80px;
+  }
+ }
+ 
