@@ -3,11 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perguntas - EcoTec SENAI </title>
+  <title>Perguntas - EcoTec SENAI</title>
   <link rel="stylesheet" href="pergunta.css">
+  <style>
+    /* Estilo para a tela de fim com borda natalina */
+    #end-screen {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      border: 10px solid transparent;
+      border-radius: 15px;
+      background-image: url('https://www.kindpng.com/picc/m/115-1151895_natal-de-borda-natalina-png-png-download.png'); /* Borda natalina */
+      background-size: cover;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #end-screen h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    #end-screen p {
+      font-size: 1.2em;
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="quiz-container">
     <div class="header">
       <h1 id="question-number">Pergunta 1</h1>
     </div>
@@ -19,194 +49,93 @@
     <div class="feedback" id="feedback"></div>
     <button id="next-button" onclick="nextQuestion()">Próxima</button>
   </div>
-
   
+  <!-- Tela final com borda natalina -->
+  <div id="end-screen">
+    <h2 class="Quizfim">Quiz Finalizado!</h2>
+    <p>Parabéns por completar o quiz.</p>
+  </div>
+
   <script>
     const questions = [
-      {
-        question: "O que significa ESG?",
-        options: [
+      { question: "O que significa ESG?", options: [
           { text: "(A)  Economic, Social, and Government.", correct: false },
           { text: "(B)  Environmental, Social, and Government.", correct: false },
           { text: "(C)  Environmental, Social, and Governance.", correct: true },
           { text: "(D)  Economic, Society, and Governance.", correct: false }
-        ]
-      },
-      {
-        question: "Qual dos seguintes é um exemplo de uma prática de governança dentro do ESG?",
-        options: [
+        ] },
+      { question: "Qual dos seguintes é um exemplo de uma prática de governança dentro do ESG?", options: [
           { text: "(A)  Utilizar energias renováveis.", correct: false },
           { text: "(B)  Garantir diversidade na equipe.", correct: false },
           { text: "(C)  Promover auditorias internas e transparência.", correct: true },
           { text: "(D)  Criar projetos sociais.", correct: false }
-        ]
-      },
-      {
-        question: "Qual é um exemplo de prática social em ESG?",
-        options: [
+        ] },
+      { question: "Qual é um exemplo de prática social em ESG?", options: [
           { text: "(A)  Reduzir emissões de carbono.", correct: false },
           { text: "(B)  Implementar um código de ética.", correct: false },
           { text: "(C)  Estabelecer políticas de diversidade e inclusão.", correct: true },
           { text: "(D)  Utilizar energia eólica.", correct: false }
-        ]
-      },
-      {
-        question: "O que significa emissões de carbono zero?",
-        options: [
+        ] },
+      { question: "O que significa emissões de carbono zero?", options: [
           { text: "(A)  Nenhuma emissão de CO₂ é liberada, mas outras emissões são permitidas.", correct: false },
           { text: "(B)  Compensar todas as emissões de carbono geradas.", correct: true },
           { text: "(C)  Nenhuma empresa pode alcançar emissões zero.", correct: false },
           { text: "(D)  Somente plantas podem produzir emissões zero.", correct: false }
-        ]
-      },
-      {
-        question: "Qual é um dos principais benefícios de implementar práticas de ESG para as empresas?",
-        options: [
+        ] },
+      { question: "Qual é um dos principais benefícios de implementar práticas de ESG para as empresas?", options: [
           { text: "(A)  Evitar completamente qualquer tipo de regulamentação.", correct: false },
           { text: "(B)  Reduzir os custos com funcionários.", correct: false },
           { text: "(C)  Atrair investidores e melhorar a imagem da empresa.", correct: true },
           { text: "(D)  Impedir a expansão da empresa.", correct: false }
-        ]
-      },  
-      {
-        question: "Como as empresas podem integrar práticas sustentáveis no seu modelo de negócios, sem comprometer a competitividade ou a rentabilidade a longo prazo?",
-        options: [
+        ] },
+      { question: "Como as empresas podem integrar práticas sustentáveis no seu modelo de negócios, sem comprometer a competitividade ou a rentabilidade a longo prazo?", options: [
           { text: "(A)  Adotando práticas sustentáveis apenas como marketing.", correct: false },
           { text: "(B)  Reduzindo custos drasticamente, sem considerar inovação.", correct: false },
           { text: "(C)  Focando apenas na conformidade ambiental.", correct: false },
           { text: "(D)  Investindo em inovação e eficiência operacional sustentáveis.", correct: true }
-        ]
-      },  
-      {
-        question: "De que maneira os investidores podem avaliar de forma eficaz as iniciativas ESG de uma empresa e garantir que essas práticas estejam alinhadas com os seus próprios valores e objetivos financeiros?",
-        options: [
+        ] },
+      { question: "De que maneira os investidores podem avaliar de forma eficaz as iniciativas ESG de uma empresa e garantir que essas práticas estejam alinhadas com os seus próprios valores e objetivos financeiros?", options: [
           { text: "(A)  Exigindo a conformidade com regulamentações sem incentivar a inovação.", correct: false },
           { text: "(B)  Oferecendo incentivos fiscais para práticas ambientais, mas sem exigir mudanças sociais.", correct: false },
           { text: "(C)  Engajando-se diretamente com a liderança da empresa para entender as práticas ESG.", correct: true },
           { text: "(D)  Analisando apenas o desempenho financeiro das empresas, ignorando as questões ESG.", correct: false }
-        ]
-      },  
-      {
-        question: "Como as políticas públicas e a regulação de ESG podem influenciar as estratégias corporativas e a forma como as empresas abordam as questões ambientais, sociais e de governança?",
-        options: [
+        ] },
+      { question: "Como as políticas públicas e a regulação de ESG podem influenciar as estratégias corporativas e a forma como as empresas abordam as questões ambientais, sociais e de governança?", options: [
           { text: "(A)  Investindo exclusivamente em empresas com boas classificações ESG, sem investigar mais a fundo.", correct: false },
           { text: "(B)  Avaliando relatórios ESG e participando de discussões com a empresa sobre suas práticas e impactos.", correct: true },
           { text: "(C)  Engajando-se diretamente com a liderança da empresa para entender as práticas ESG.", correct: false },
           { text: "(D)  Analisando apenas o desempenho financeiro das empresas, ignorando as questões ESG.", correct: false }
-        ]
-      },  
-      {
-        question: " Quais são os benefícios tangíveis e intangíveis que empresas que adotam práticas robustas de ESG podem esperar alcançar em termos de reputação, atração de talentos e fidelização de clientes?",
-        options: [
+        ] },
+      { question: " Quais são os benefícios tangíveis e intangíveis que empresas que adotam práticas robustas de ESG podem esperar alcançar em termos de reputação, atração de talentos e fidelização de clientes?", options: [
           { text: "(A)  ESG piora a reputação, visto como puro marketing.", correct: false },
           { text: "(B)  ESG não fideliza clientes; consumidores não ligam.", correct: false },
           { text: "(C)  ESG melhora reputação, atrai talentos e fideliza clientes. ", correct: true },
           { text: "(D)  Talentos preferem empresas focadas só em lucro, não em ESG.", correct: false }
-        ]
-      },  
-      {
-        question: "Qual dos seguintes NÃO é um exemplo de prática ambiental em ESG?",
-        options: [
+        ] },
+      { question: "Qual dos seguintes NÃO é um exemplo de prática ambiental em ESG?", options: [
           { text: "(A)  Reduzir o uso de plástico.", correct: false },
           { text: "(B)  Implementar uma política de reciclagem.", correct: false },
           { text: "(C)  Criar um conselho de diversidade.", correct: true },
           { text: "(D)  Usar energia solar.", correct: false }
-        ]
-      },
-      {
-        question: "O que é responsabilidade social corporativa (RSC) no contexto de ESG?",
-        options: [
+        ] },
+      { question: "O que é responsabilidade social corporativa (RSC) no contexto de ESG?", options: [
           { text: "(A)  Apenas cumprir as leis trabalhistas mínimas.", correct: false },
           { text: "(B)  Melhorar os produtos sem investir em práticas sociais.", correct: false },
           { text: "(C)  A responsabilidade de uma empresa em contribuir com a sociedade.", correct: true },
           { text: "(D)  Reduzir apenas as emissões de gases poluentes.", correct: false }
-        ]
-      },
-      { 
-  question: "O que significa a sigla ESG e qual a sua importância para as empresas no cenário atual?",
-  options: [
-    { text: "(A) ESG significa 'Estrategia Social e Governamental', focando apenas em lucros.", correct: false },
-    { text: "(B) ESG refere-se a práticas relacionadas ao meio ambiente, responsabilidade social e governança, sendo essencial para sustentabilidade.", correct: true },
-    { text: "(C) ESG é apenas uma tendência temporária, sem impacto nas empresas a longo prazo.", correct: false },
-    { text: "(D) ESG envolve apenas a redução de custos operacionais sem se importar com as pessoas e o meio ambiente.", correct: false }
-  ]
-},
-{ 
-  question: "Como a prática de governança corporativa no ESG contribui para a transparência e a confiança do investidor?",
-  options: [
-    { text: "(A) Governança fraca melhora a confiança, pois não há muitos controles.", correct: false },
-    { text: "(B) A boa governança corporativa, alinhada com ESG, aumenta a transparência e fortalece a confiança dos investidores.", correct: true },
-    { text: "(C) Governança forte é irrelevante para a confiança dos investidores.", correct: false },
-    { text: "(D) Investidores preferem empresas com pouca transparência, sem ESG.", correct: false }
-  ]
-},
-{ 
-  question: "A adoção de práticas ambientais dentro do ESG visa principalmente qual objetivo?",
-  options: [
-    { text: "(A) Minimizar o impacto ambiental e contribuir para a preservação do planeta.", correct: true },
-    { text: "(B) Maximizar os lucros sem se preocupar com os recursos naturais.", correct: false },
-    { text: "(C) Evitar qualquer tipo de regulamentação ambiental.", correct: false },
-    { text: "(D) Focar apenas em reduzir custos sem considerar o meio ambiente.", correct: false }
-  ]
-},
-{ 
-  question: "Quais são os principais desafios que as empresas enfrentam ao adotar práticas de ESG?",
-  options: [
-    { text: "(A) Implementação exige mudanças rápidas e a adaptação cultural das empresas.", correct: true },
-    { text: "(B) ESG é fácil de implementar e não exige investimentos significativos.", correct: false },
-    { text: "(C) As empresas não enfrentam desafios ao adotar práticas de ESG, pois é um processo simples.", correct: false },
-    { text: "(D) A adoção de ESG só gera desafios legais, sem necessidade de mudança organizacional.", correct: false }
-  ]
-},
-{ 
-  question: "Qual é o impacto das práticas sociais dentro do ESG para a reputação de uma empresa?",
-  options: [
-    { text: "(A) As práticas sociais não têm impacto significativo sobre a reputação da empresa.", correct: false },
-    { text: "(B) Práticas sociais positivas, como diversidade e inclusão, melhoram a imagem e reputação da empresa.", correct: true },
-    { text: "(C) Empresas que não se preocupam com as questões sociais têm melhor reputação no mercado.", correct: false },
-    { text: "(D) Investir em práticas sociais prejudica a reputação da empresa.", correct: false }
-  ]
-},
-{ 
-  question: "De que forma as empresas podem medir o sucesso das suas práticas de ESG?",
-  options: [
-    { text: "(A) Medindo apenas os lucros financeiros sem considerar o impacto social e ambiental.", correct: false },
-    { text: "(B) Através de métricas como a redução das emissões de carbono, diversidade no ambiente de trabalho e transparência na governança.", correct: true },
-    { text: "(C) O sucesso em ESG não pode ser medido, pois é uma prática abstrata.", correct: false },
-    { text: "(D) O sucesso de ESG depende apenas da imagem pública, não dos resultados concretos.", correct: false }
-  ]
-},
-{ 
-  question: "As empresas que adotam práticas de ESG têm mais facilidade em atrair investidores?",
-  options: [
-    { text: "(A) Não, investidores preferem empresas que se concentram exclusivamente no lucro.", correct: false },
-    { text: "(B) Sim, investidores estão cada vez mais priorizando empresas com boas práticas de ESG devido à crescente conscientização sobre sustentabilidade.", correct: true },
-    { text: "(C) Investidores preferem empresas sem iniciativas de ESG, pois elas são mais lucrativas a curto prazo.", correct: false },
-    { text: "(D) Práticas de ESG não influenciam nas decisões dos investidores.", correct: false }
-  ]
-},
-{ 
-  question: "Quais práticas ambientais são mais comumente adotadas pelas empresas dentro de uma estratégia ESG?",
-  options: [
-    { text: "(A) Uso de materiais recicláveis, redução do desperdício de água e redução de emissões de carbono.", correct: true },
-    { text: "(B) Aumento do consumo de recursos naturais e intensificação do uso de energias não renováveis.", correct: false },
-    { text: "(C) Apenas o marketing ambiental, sem mudanças reais nas práticas operacionais.", correct: false },
-    { text: "(D) Redução de salários e benefícios para financiar projetos ambientais.", correct: false }
-  ]
-},
-{ 
-  question: "Qual é a relação entre ESG e a atração de talentos para uma empresa?",
-  options: [
-    { text: "(A) Empresas que não se preocupam com ESG atraem mais talentos, pois os profissionais preferem o lucro à sustentabilidade.", correct: false },
-    { text: "(B) Talentos, especialmente as gerações mais jovens, preferem trabalhar em empresas que adotam práticas responsáveis em relação ao meio ambiente e à sociedade.", correct: true },
-    { text: "(C) Não existe relação entre a adoção de práticas ESG e a atração de talentos.", correct: false },
-    { text: "(D) Atração de talentos depende apenas do salário, não das práticas ambientais ou sociais.", correct: false }
-  ]
-},
-
- ];
+        ] },
+      // Adicione as outras perguntas aqui de forma similar...
+    ];
 
     let currentQuestionIndex = 0;
+    let selectedQuestions = [];
+
+    function shuffleArray(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]; // Troca os elementos
+      }
+    }
 
     function loadQuestion() {
       const questionNumber = document.getElementById("question-number");
@@ -215,58 +144,53 @@
       const feedback = document.getElementById("feedback");
       const nextButton = document.getElementById("next-button");
 
-      feedback.style.display = "none";
-      nextButton.style.display = "none";
-
-      const currentQuestion = questions[currentQuestionIndex];
+      const question = selectedQuestions[currentQuestionIndex];
       questionNumber.textContent = `Pergunta ${currentQuestionIndex + 1}`;
-      questionText.textContent = currentQuestion.question;
+      questionText.textContent = question.question;
 
       optionsContainer.innerHTML = "";
-      currentQuestion.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.classList.add("option");
-        button.textContent = option.text;
-        button.onclick = () => checkAnswer(option.correct);
-        optionsContainer.appendChild(button);
+      question.options.forEach((option, index) => {
+        const optionButton = document.createElement("button");
+        optionButton.textContent = option.text;
+        optionButton.classList.add("option");
+        optionButton.onclick = () => checkAnswer(option, feedback, nextButton);
+        optionsContainer.appendChild(optionButton);
       });
+
+      feedback.style.display = "none"; // Esconde feedback de erro ou acerto
+      nextButton.style.display = "none"; // Esconde o botão de próxima até a resposta
     }
 
-    function checkAnswer(isCorrect) {
-      const feedback = document.getElementById("feedback");
-      const nextButton = document.getElementById("next-button");
-
-      feedback.style.display = "block";
-      if (isCorrect) {
-        feedback.textContent = "Parabéns! Você acertou!";
+    function checkAnswer(option, feedback, nextButton) {
+      if (option.correct) {
+        feedback.textContent = "Você acertou!";
         feedback.style.color = "green";
       } else {
-        feedback.textContent = "Resposta errada!";
+        feedback.textContent = "Ops! Você errou!";
         feedback.style.color = "red";
       }
 
-      nextButton.style.display = "block";
-
-      const buttons = document.querySelectorAll(".option");
-      buttons.forEach(button => button.disabled = true);
+      feedback.style.display = "block";
+      nextButton.style.display = "inline-block";
     }
 
     function nextQuestion() {
       currentQuestionIndex++;
-
-      if (currentQuestionIndex < questions.length) {
+      if (currentQuestionIndex < selectedQuestions.length) {
         loadQuestion();
       } else {
-        const container = document.querySelector(".container");
-        container.innerHTML = `
-          <h1>Quiz Finalizado!</h1>
-          <p>Parabéns por completar o quiz.</p>
-        `;
+        document.getElementById("end-screen").style.display = "block"; // Exibe a tela final
+        document.getElementById("quiz-container").style.display = "none"; // Esconde o quiz
       }
     }
 
-    loadQuestion();
+    function startQuiz() {
+      shuffleArray(questions); // Embaralha as perguntas
+      selectedQuestions = questions.slice(0, 4); // Seleciona as 4 primeiras perguntas
+      loadQuestion();
+    }
+
+    window.onload = startQuiz;
   </script>
 </body>
 </html>
-``
