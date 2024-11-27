@@ -108,10 +108,12 @@ body {
 #end-screen h2 {
   font-size: 1.8em;
   margin-bottom: 15px;
+  color: black; /* Mudança para texto preto */
 }
 
 #end-screen p {
   font-size: 1.2em;
   margin-top: 0;
+  color: black; /* Mudança para texto preto */
 }
 
